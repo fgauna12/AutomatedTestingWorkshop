@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
@@ -30,7 +31,7 @@ namespace KetoPal.Api.Controllers
             {
                 await connection.OpenAsync();
 
-                var products = await connection.QueryAsync<Product>("Select [long_name] 'Name' from dbo.Products");
+                var products = await connection.QueryAsync<Product>("usp_Get_FoodProductsByCarbs", commandType: CommandType.StoredProcedure);
 
                 return Ok(products.ToList());
             }
@@ -40,5 +41,7 @@ namespace KetoPal.Api.Controllers
     public class Product
     {
         public string Name { get; set; }
+        public string Manufacturer { get; set; }
+        public double Carbs { get; set; }
     }
 }
