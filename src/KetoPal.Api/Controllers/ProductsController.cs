@@ -31,6 +31,7 @@ namespace KetoPal.Api.Controllers
             {
                 await connection.OpenAsync();
 
+                // oh yea boil the ocean
                 var products = await connection.QueryAsync<Product>("usp_Get_FoodProductsByCarbs", commandType: CommandType.StoredProcedure);
 
                 return Ok(products.ToList());
