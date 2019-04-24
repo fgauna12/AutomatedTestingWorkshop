@@ -41,6 +41,6 @@ namespace KetoPal.Api.Controllers
     public class CarbConsumption
     {
         public DateTimeOffset ConsumedOn { get; set; }
-        public double Amount { get;set; }
+        public double Amount { get; set; }
     }
 }

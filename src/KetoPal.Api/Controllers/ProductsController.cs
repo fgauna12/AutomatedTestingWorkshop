@@ -27,18 +27,20 @@ namespace KetoPal.Api.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<List<Product>>> Get([FromQuery] int userId)
         {
-            using (var connection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            using (var connection = new SqlConnection(_configuration.GetConnectionString("FoodDb")))
             {
                 await connection.OpenAsync();
 
                 // oh yea boil the ocean
-                var products = await connection.QueryAsync<Product>("usp_Get_FoodProductsByCarbs", commandType: CommandType.StoredProcedure);
+                var products = await connection.QueryAsync<Product>("usp_Get_FoodProductsByCarbs",
+                    commandType: CommandType.StoredProcedure);
 
                 if (userId > 0)
                 {
                     var user = InMemoryUsers.GetUsers().FirstOrDefault(x => x.Id == userId);
 
-                    double consumption = user.CarbConsumption.Where(x => x.ConsumedOn.Date == DateTimeOffset.Now.Date).Sum(x => x.Amount);
+                    double consumption = user.CarbConsumption.Where(x => x.ConsumedOn.Date == DateTimeOffset.Now.Date)
+                        .Sum(x => x.Amount);
 
                     double max = user.Preference.MaxCarbsPerDayInGrams - consumption;
 
@@ -50,6 +52,40 @@ namespace KetoPal.Api.Controllers
                 return Ok(products.ToList());
             }
         }
+
+        // POST api/products/_actions/consume
+        [Route("_actions/consume")]
+        [HttpPost]
+        [ProducesResponseType(StatusCodes.Status304NotModified)]
+        public async Task<ActionResult> Consume([FromBody]ConsumeProductCommand command)
+        {
+            if (command.UserId > 0)
+            {
+                var user = InMemoryUsers.GetUsers().FirstOrDefault(x => x.Id == command.UserId);
+                user.CarbConsumption.Add(new CarbConsumption()
+                {
+                    Amount = command.CarbAmount,
+                    ConsumedOn = DateTimeOffset.Now
+                });
+
+                return NotModified();
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
+
+        private ActionResult NotModified()
+        {
+            return new EmptyResult();
+        }
+    }
+
+    public class ConsumeProductCommand
+    {
+        public int UserId { get; set; }
+        public double CarbAmount { get; set; }
     }
 
     public class Product
