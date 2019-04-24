@@ -25,7 +25,7 @@ namespace KetoPal.Api.Controllers
         // GET api/products
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<ActionResult<List<Product>>> Get()
+        public async Task<ActionResult<List<Product>>> Get([FromQuery] int userId)
         {
             using (var connection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
             {
@@ -33,6 +33,19 @@ namespace KetoPal.Api.Controllers
 
                 // oh yea boil the ocean
                 var products = await connection.QueryAsync<Product>("usp_Get_FoodProductsByCarbs", commandType: CommandType.StoredProcedure);
+
+                if (userId > 0)
+                {
+                    var user = InMemoryUsers.GetUsers().FirstOrDefault(x => x.Id == userId);
+
+                    double consumption = user.CarbConsumption.Where(x => x.ConsumedOn.Date == DateTimeOffset.Now.Date).Sum(x => x.Amount);
+
+                    double max = user.Preference.MaxCarbsPerDayInGrams - consumption;
+
+                    List<Product> productsThatCanBeConsumed = products.Where(x => x.Carbs <= max).ToList();
+
+                    return Ok(productsThatCanBeConsumed);
+                }
 
                 return Ok(products.ToList());
             }
