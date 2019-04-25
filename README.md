@@ -88,6 +88,19 @@ Next, launch SQL Server Management Studio and provide the following parameters:
 
 ![](docs/images/ssms-connect.png?raw=true)
 
-After you connect, you'll see a database called Foods
+After you connect, you'll see a database called *Foods*
 
 ![](docs/images/ssms-explorer.png?raw=true)
+
+### 2. Run the API
+
+If you haven't already, clone this repository.
+
+Open the `KetoPal.sln` solution.
+
+Go to the `appsettings.Development.json` config file and ensure your connection strings have the correct IP for the server. While you're at it, also provide the database password you set up.
+
+After you change the settings, run the project. 
+Then verify that the API is working correctly by going to `http://localhost:[some port]:/api/products`
+
+The database is quite big, hopefully it doesn't time out on you. :smile:

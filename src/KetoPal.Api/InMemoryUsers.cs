@@ -17,7 +17,7 @@ namespace KetoPal.Api
                 },
                 CarbConsumption = new List<CarbConsumption>()
             }
-        };
+        };  
 
         public static List<User> GetUsers()
         {
