@@ -89,3 +89,5 @@ Next, launch SQL Server Management Studio and provide the following parameters:
 ![](docs/images/ssms-connect.png?raw=true)
 
 After you connect, you'll see a database called Foods
+
+![](docs/images/ssms-explorer.png?raw=true)
