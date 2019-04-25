@@ -86,6 +86,6 @@ Next, launch SQL Server Management Studio and provide the following parameters:
 - Password: The password you picked above on the `docker run` step
 
 
-![](docs\images\ssms-connect.png)
+![](docs/images/ssms-connect.png?raw=true)
 
 After you connect, you'll see a database called Foods
