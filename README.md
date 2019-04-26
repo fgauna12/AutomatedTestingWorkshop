@@ -105,6 +105,8 @@ The database is quite big, hopefully it doesn't time out on you. :smile:
 
 ## Characterization Tests
 
+[](http://www.informit.com/ShowCover.aspx?isbn=0131177052)
+
 You've been tasked with creating a new feature. Clearly, the code is not in the best shape. So you decide you want to do some refactoring and add automated tests. Nice! the boyscout rule - leaving things better than you found them.
 
 Before we start creating the feature, let's create some **characterization tests**. Characterization tests help us learn from the system and how it's currently in production. This is extremly useful when learning what a system does and how it works. If you'd like a refresher on characterization tests, there's a really good [blog post](https://michaelfeathers.silvrback.com/characterization-testing) from Michael Feathers.
@@ -151,6 +153,14 @@ Do some thinking and Googlefu:
 - How could you test the logic inside the stored procedures?
 
 ## Unit Tests
+
+[](http://t1.gstatic.com/images?q=tbn:ANd9GcRll7vIIAPsaPfALjtDK-jVGFa2KZ4ZRsccYeBm2viTHQ-e_VNr)
+
+### Useful Packages
+
+- [Bogus](https://github.com/bchavez/Bogus)
+- [Moq](https://github.com/moq/moq)
+- [Shouldly](https://github.com/shouldly/shouldly)
 
 Now that consumption calculation is a bit cleaner, start adding some unit tests. Run your characterization and newly created unit tests often.
 
