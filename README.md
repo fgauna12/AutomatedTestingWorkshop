@@ -111,8 +111,6 @@ You've been tasked with creating a new feature. Clearly, the code is not in the 
 
 Before we start creating the feature, let's create some **characterization tests**. Characterization tests help us learn from the system and how it's currently in production. This is extremly useful when learning what a system does and how it works. If you'd like a refresher on characterization tests, there's a really good [blog post](https://michaelfeathers.silvrback.com/characterization-testing) from Michael Feathers.
 
-The feature you're going to be working on will be related to the calculation of the daily carb consumption. So you know you'll be modifying the `POST api/products/_actions/consume` API call. 
-
 ### 1. Create Characterization Tests for the `ProductsController.Get` method
 
 Feel free to create a test project. Start experimenting and creating a characterization test to understand how it works today.
