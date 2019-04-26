@@ -24,8 +24,6 @@ This sample application is meant to help someone like me understand what foods t
 - [Getting Started](#getting-started)
 - [Characterization Tests](#characterization-tests)
 - [Unit Tests](#unit-tests)
-- [Adding a Feature](#adding-a-feature)
-- [Fixing a Bug](#fixing-a-bug)
 
 ## Getting Started
 
