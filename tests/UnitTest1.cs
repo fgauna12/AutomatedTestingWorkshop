@@ -21,7 +21,7 @@ namespace KetoPal.Tests
             configuration.Setup(x => x.GetSection("ConnectionStrings")["FoodDb"])
                 .Returns(connectionString);
 
-            var productsController = new ProductsController(configuration.Object, new ProductsProvider(connectionString));
+            var productsController = new ProductsController(new ProductsProvider(connectionString));
 
             ActionResult<List<Product>> response = await productsController.Get(0);
         }
@@ -55,7 +55,7 @@ namespace KetoPal.Tests
             configuration.Setup(x => x.GetSection("ConnectionStrings")["FoodDb"])
                 .Returns(connectionString);
 
-            var productsController = new ProductsController(configuration.Object, new ProductsProvider(connectionString));
+            var productsController = new ProductsController(new ProductsProvider(connectionString));
 
             ActionResult<List<Product>> response = await productsController.Get(0);
 
@@ -74,7 +74,7 @@ namespace KetoPal.Tests
             configuration.Setup(x => x.GetSection("ConnectionStrings")["FoodDb"])
                 .Returns(connectionString);
 
-            var productsController = new ProductsController(configuration.Object, new ProductsProvider(connectionString));
+            var productsController = new ProductsController(new ProductsProvider(connectionString));
 
             ActionResult<List<Product>> response = await productsController.Get(1);
 
@@ -93,7 +93,7 @@ namespace KetoPal.Tests
             configuration.Setup(x => x.GetSection("ConnectionStrings")["FoodDb"])
                 .Returns(connectionString);
 
-            var productsController = new ProductsController(configuration.Object, new ProductsProvider(connectionString));
+            var productsController = new ProductsController(new ProductsProvider(connectionString));
 
             ActionResult<List<Product>> response0 = await productsController.Get(0);
             ActionResult<List<Product>> response1 = await productsController.Get(1);

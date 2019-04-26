@@ -8,7 +8,6 @@ using Dapper;
 using KetoPal.Core;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
 
 namespace KetoPal.Api.Controllers
 {
@@ -16,12 +15,10 @@ namespace KetoPal.Api.Controllers
     [ApiController]
     public class ProductsController : ControllerBase
     {
-        private readonly IConfiguration _configuration;
         private readonly IProductsProvider _productsProvider;
 
-        public ProductsController(IConfiguration configuration, IProductsProvider productsProvider)
+        public ProductsController(IProductsProvider productsProvider)
         {
-            _configuration = configuration;
             _productsProvider = productsProvider;
         }
 
@@ -30,35 +27,19 @@ namespace KetoPal.Api.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<List<Product>>> Get([FromQuery] int userId)
         {
-            using (var connection = new SqlConnection(_configuration.GetConnectionString("FoodDb")))
+            List<Product> products;
+
+            if (userId > 0)
             {
-                await connection.OpenAsync();
-
-                // oh yea boil the ocean
-                //var products = await connection.QueryAsync<Product>("usp_Get_FoodProductsByCarbs",
-                //    commandType: CommandType.StoredProcedure);
-
-                var products = await _productsProvider.GetFoodProductsByCarbs();
-
-                if (userId > 0)
-                {
-                    //var user = InMemoryUsers.GetUsers().FirstOrDefault(x => x.Id == userId);
-
-                    //double consumption = user.CarbConsumption.Where(x => x.ConsumedOn.Date == DateTimeOffset.Now.Date)
-                    //    .Sum(x => x.Amount);
-
-                    //double max = user.Preference.MaxCarbsPerDayInGrams - consumption;
-
-                    //List<Product> productsThatCanBeConsumed = products.Where(x => x.Carbs <= max).ToList();
-
-                    //return Ok(productsThatCanBeConsumed);
-
-                    var user = InMemoryUsers.GetUsers().FirstOrDefault(x => x.Id == userId);
-                    products = await _productsProvider.GetFoodProductsByCarbsForUser(user);
-                }
-
-                return Ok(products.ToList());
+                var user = InMemoryUsers.GetUsers().FirstOrDefault(x => x.Id == userId);
+                products = await _productsProvider.GetFoodProductsByCarbsForUser(user);
             }
+            else
+            {
+                products = await _productsProvider.GetFoodProductsByCarbs();
+            }
+
+            return Ok(products.ToList());
         }
 
         // POST api/products/_actions/consume
