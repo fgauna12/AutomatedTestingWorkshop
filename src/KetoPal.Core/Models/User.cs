@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace KetoPal.Core
+namespace KetoPal.Core.Models
 {
     public class User
     {
