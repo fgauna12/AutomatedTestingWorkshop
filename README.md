@@ -128,7 +128,7 @@ Run your characterization tests often to make sure your refactoring is not break
 
 Experiment with using SOLID principles and trying out concepts like _Clean Architecture_.
 
-###E 2.B Stretch Goal 
+#### 2.B Stretch Goal 
 
 What happens when the database goes down? Can you similate this?
 
