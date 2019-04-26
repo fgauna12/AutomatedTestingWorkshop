@@ -105,7 +105,7 @@ The database is quite big, hopefully it doesn't time out on you. :smile:
 
 ## Characterization Tests
 
-[](http://www.informit.com/ShowCover.aspx?isbn=0131177052)
+![](http://www.informit.com/ShowCover.aspx?isbn=0131177052)
 
 You've been tasked with creating a new feature. Clearly, the code is not in the best shape. So you decide you want to do some refactoring and add automated tests. Nice! the boyscout rule - leaving things better than you found them.
 
@@ -154,15 +154,15 @@ Do some thinking and Googlefu:
 
 ## Unit Tests
 
-[](http://t1.gstatic.com/images?q=tbn:ANd9GcRll7vIIAPsaPfALjtDK-jVGFa2KZ4ZRsccYeBm2viTHQ-e_VNr)
+![](http://t1.gstatic.com/images?q=tbn:ANd9GcRll7vIIAPsaPfALjtDK-jVGFa2KZ4ZRsccYeBm2viTHQ-e_VNr)
+
+Now that consumption calculation is a bit cleaner, start adding some unit tests. Run your characterization and newly created unit tests often.
 
 ### Useful Packages
 
 - [Bogus](https://github.com/bchavez/Bogus)
 - [Moq](https://github.com/moq/moq)
 - [Shouldly](https://github.com/shouldly/shouldly)
-
-Now that consumption calculation is a bit cleaner, start adding some unit tests. Run your characterization and newly created unit tests often.
 
 ### 5. Create Unit Tests for the logic related to `ProductsController.Get`
 
