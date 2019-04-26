@@ -21,11 +21,11 @@ This sample application is meant to help someone like me understand what foods t
 
 ### Table of Contents
 
-- Getting Started
-- Characterization Tests
-- Unit Tests
-- Adding a Feature
-- Fixing a Bug
+- [Getting Started](#getting-started)
+- [Characterization Tests](#characterization-tests)
+- [Unit Tests](#unit-tests)
+- [Adding a Feature](#adding-a-feature)
+- [Fixing a Bug](#fixing-a-bug)
 
 ## Getting Started
 
@@ -104,3 +104,38 @@ After you change the settings, run the project.
 Then verify that the API is working correctly by going to `http://localhost:[some port]:/api/products`
 
 The database is quite big, hopefully it doesn't time out on you. :smile:
+
+## Characterization Tests
+
+You've been tasked with creating a new feature. Clearly, the code is not in the best shape. So you decide you want to do some refactoring and add automated tests. Nice! the boyscout rule - leaving things better than you found them.
+
+Before we start creating the feature, let's create some **characterization tests**. Characterization tests help us learn from the system and how it's currently in production. This is extremly useful when learning what a system does and how it works. If you'd like a refresher on characterization tests, there's a really good [blog post](https://michaelfeathers.silvrback.com/characterization-testing) from Michael Feathers.
+
+The feature you're going to be working on will be related to the calculation of the daily carb consumption. So you know you'll be modifying the `POST api/products/_actions/consume` API call. 
+
+### 1. Create Characterization Tests for the `ProductsController.Get` method
+
+Feel free to create a test project. Start experimenting and creating a characterization test to understand how it works today.
+
+As you start learning, create some test cases to start documenting given some criteria what the expected results are.
+
+>:warning: Note: Remember, don't start refactoring right away. You have running database using docker. Feel free to connect to it using your tests and see the actual data.
+
+### 2. Refactor the method
+
+Run your characterization tests often to make sure your refactoring is not breaking things.
+
+### 1. Create Characterization Tests for the `ProductsController.Get` method
+
+### 2. Refactor the method
+
+## Unit Tests
+
+Now that consumption calculation is a bit cleaner, start adding some unit tests. Run your characterization and newly created unit tests often.
+
+## Adding a Feature
+
+At the moment, 
+
+## Fixing a Bug
+
