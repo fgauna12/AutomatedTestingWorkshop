@@ -144,8 +144,11 @@ Are you able to reuse some of the code you previously created?
 
 ### 4.B Stretch Goal 
 
+Do some thinking and Googlefu:
+
 - What's are the downsides of using a static class like `InMemoryUsers`?
 - Where and how would you do validation API requests? 
+- How could you test the logic inside the stored procedures?
 
 ## Unit Tests
 
