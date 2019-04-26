@@ -114,10 +114,6 @@ Before we start creating the feature, let's create some **characterization tests
 - [Testing Controller Logic in ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/mvc/controllers/testing?view=aspnetcore-2.2)
 - [Parsing Results from ActionResult](https://stackoverflow.com/a/51489502)
 
-### Stretch Goal 
-
-What happens when the database goes down? Can you similate this?
-
 ### 1. Create Characterization Tests for the `ProductsController.Get` method
 
 Feel free to create a test project. Start experimenting and creating a characterization test to understand how it works today.
@@ -132,6 +128,10 @@ Run your characterization tests often to make sure your refactoring is not break
 
 Experiment with using SOLID principles and trying out concepts like _Clean Architecture_.
 
+### 2.B Stretch Goal 
+
+What happens when the database goes down? Can you similate this?
+
 ### 3. Create Characterization Tests for the `ProductsController.Consume` method
 
 Now let's do it again for the consumption api call.
@@ -141,6 +141,11 @@ Now let's do it again for the consumption api call.
 After you have the tests working, refactor and re-run your tests often.
 
 Are you able to reuse some of the code you previously created?
+
+### 4.B Stretch Goal 
+
+- What's are the downsides of using a static class like `InMemoryUsers`?
+- Where and how would you do validation API requests? 
 
 ## Unit Tests
 
