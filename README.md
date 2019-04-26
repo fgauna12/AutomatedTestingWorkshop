@@ -117,7 +117,7 @@ Feel free to create a test project. Start experimenting and creating a character
 
 As you start learning, create some test cases to start documenting given some criteria what the expected results are.
 
->:warning: Note: Remember, don't start refactoring right away. You have running database using docker. Feel free to connect to it using your tests and see the actual data.
+>:warning: Note: Remember, don't start refactoring right away. You have running database using docker. Feel free to connect to it using your tests and expirement away.
 
 ### 2. Refactor the method
 
