@@ -154,3 +154,14 @@ Do some thinking and Googlefu:
 
 Now that consumption calculation is a bit cleaner, start adding some unit tests. Run your characterization and newly created unit tests often.
 
+### 5. Create Unit Tests for the logic related to `ProductsController.Get`
+
+Know that you know some of the characteristics of the code and how it behaves *and* you have refactored it using well-known practices. Add some unit tests for the test cases you do know. **It's ok to keep refactoring**, it didn't have to be perfect the first time.
+
+Run your tests often.
+
+### 6. Create Unit Tests for the logic related to `ProductsController.Consume`
+
+Same Idea!
+
+After you're done, feel free to blow away your characterization tests, leaving behind the unit tests. :muscle:
