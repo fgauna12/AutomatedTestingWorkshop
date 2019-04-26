@@ -174,7 +174,8 @@ Run your tests often.
 
 Same Idea!
 
-## Now get rid of your characterization tests :wink:
+## 7. Now get rid of your characterization tests :wink:
 
 After you're done, feel free to blow away your characterization tests, leaving behind the unit tests. :muscle:
+
 Or you could choose to convert those tests to clean integration tests. 
