@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -28,6 +29,20 @@ namespace KetoPal.Infrastructure
 
                 return products.ToList();
             }
+        }
+
+        public async Task<List<Product>> GetFoodProductsByCarbsForUser(User user)
+        {
+            var products = await GetFoodProductsByCarbs();
+
+            double consumption = user.CarbConsumption.Where(x => x.ConsumedOn.Date == DateTimeOffset.Now.Date)
+                .Sum(x => x.Amount);
+
+            double max = user.Preference.MaxCarbsPerDayInGrams - consumption;
+
+            List<Product> productsThatCanBeConsumed = products.Where(x => x.Carbs <= max).ToList();
+
+            return productsThatCanBeConsumed;
         }
     }
 }

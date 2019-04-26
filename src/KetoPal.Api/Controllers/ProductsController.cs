@@ -42,16 +42,19 @@ namespace KetoPal.Api.Controllers
 
                 if (userId > 0)
                 {
+                    //var user = InMemoryUsers.GetUsers().FirstOrDefault(x => x.Id == userId);
+
+                    //double consumption = user.CarbConsumption.Where(x => x.ConsumedOn.Date == DateTimeOffset.Now.Date)
+                    //    .Sum(x => x.Amount);
+
+                    //double max = user.Preference.MaxCarbsPerDayInGrams - consumption;
+
+                    //List<Product> productsThatCanBeConsumed = products.Where(x => x.Carbs <= max).ToList();
+
+                    //return Ok(productsThatCanBeConsumed);
+
                     var user = InMemoryUsers.GetUsers().FirstOrDefault(x => x.Id == userId);
-
-                    double consumption = user.CarbConsumption.Where(x => x.ConsumedOn.Date == DateTimeOffset.Now.Date)
-                        .Sum(x => x.Amount);
-
-                    double max = user.Preference.MaxCarbsPerDayInGrams - consumption;
-
-                    List<Product> productsThatCanBeConsumed = products.Where(x => x.Carbs <= max).ToList();
-
-                    return Ok(productsThatCanBeConsumed);
+                    products = await _productsProvider.GetFoodProductsByCarbsForUser(user);
                 }
 
                 return Ok(products.ToList());

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using KetoPal.Api.Controllers;
+using KetoPal.Core;
 
 namespace KetoPal.Api
 {
