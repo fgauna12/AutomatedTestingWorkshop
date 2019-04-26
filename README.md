@@ -140,9 +140,3 @@ Run your characterization tests often to make sure your refactoring is not break
 
 Now that consumption calculation is a bit cleaner, start adding some unit tests. Run your characterization and newly created unit tests often.
 
-## Adding a Feature
-
-At the moment, 
-
-## Fixing a Bug
-
