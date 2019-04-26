@@ -103,9 +103,7 @@ Then verify that the API is working correctly by going to `http://localhost:[som
 
 The database is quite big, hopefully it doesn't time out on you. :smile:
 
-
-:alarm_clock: **Pause** :alarm_clock:
-
+> :alarm_clock: **Pause** - Wait for the proctor to move on
 
 ## Characterization Tests
 
@@ -138,10 +136,7 @@ Experiment with using SOLID principles and trying out concepts like _Clean Archi
 
 What happens when the database goes down? Can you similate this?
 
-
-:alarm_clock: **Pause** :alarm_clock:
-
-
+> :alarm_clock: **Pause** - Wait for the proctor to move on
 
 ### 3. Create Characterization Tests for the `ProductsController.Consume` method
 
@@ -161,10 +156,7 @@ Do some thinking and Googlefu:
 - Where and how would you do validation API requests? 
 - How could you test the logic inside the stored procedures?
 
-
-:alarm_clock: **Pause** :alarm_clock:
-
-
+> :alarm_clock: **Pause** - Wait for the proctor to move on
 
 ## Unit Tests
 
