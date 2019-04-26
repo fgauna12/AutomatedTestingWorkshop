@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\KetoPal.Core\KetoPal.Core.csproj" />
+    <ProjectReference Include="..\KetoPal.Infrastructure\KetoPal.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
