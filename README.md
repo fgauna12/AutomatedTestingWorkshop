@@ -130,9 +130,17 @@ As you start learning, create some test cases to start documenting given some cr
 
 Run your characterization tests often to make sure your refactoring is not breaking things.
 
-### 1. Create Characterization Tests for the `ProductsController.Get` method
+Experiment with using SOLID principles and trying out concepts like _Clean Architecture_.
+
+### 1. Create Characterization Tests for the `ProductsController.Consume` method
+
+Now let's do it again for the consumption api call.
 
 ### 2. Refactor the method
+
+After you have the tests working, refactor and re-run your tests often.
+
+Are you able to reuse some of the code you previously created?
 
 ## Unit Tests
 
