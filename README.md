@@ -103,6 +103,10 @@ Then verify that the API is working correctly by going to `http://localhost:[som
 
 The database is quite big, hopefully it doesn't time out on you. :smile:
 
+
+:alarm_clock: **Pause** :alarm_clock:
+
+
 ## Characterization Tests
 
 <img src="http://www.informit.com/ShowCover.aspx?isbn=0131177052" alt="working with legacy code" height="200"/>
@@ -134,6 +138,11 @@ Experiment with using SOLID principles and trying out concepts like _Clean Archi
 
 What happens when the database goes down? Can you similate this?
 
+
+:alarm_clock: **Pause** :alarm_clock:
+
+
+
 ### 3. Create Characterization Tests for the `ProductsController.Consume` method
 
 Now let's do it again for the consumption api call.
@@ -151,6 +160,11 @@ Do some thinking and Googlefu:
 - What's are the downsides of using a static class like `InMemoryUsers`?
 - Where and how would you do validation API requests? 
 - How could you test the logic inside the stored procedures?
+
+
+:alarm_clock: **Pause** :alarm_clock:
+
+
 
 ## Unit Tests
 
