@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using KetoPal.Api.Controllers;
 using KetoPal.Core;
+using KetoPal.Core.Models;
 using KetoPal.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;

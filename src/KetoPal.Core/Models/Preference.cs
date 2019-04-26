@@ -1,4 +1,4 @@
-﻿namespace KetoPal.Core
+﻿namespace KetoPal.Core.Models
 {
     public class Preference
     {
