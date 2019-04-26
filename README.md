@@ -111,6 +111,11 @@ You've been tasked with creating a new feature. Clearly, the code is not in the 
 
 Before we start creating the feature, let's create some **characterization tests**. Characterization tests help us learn from the system and how it's currently in production. This is extremly useful when learning what a system does and how it works. If you'd like a refresher on characterization tests, there's a really good [blog post](https://michaelfeathers.silvrback.com/characterization-testing) from Michael Feathers.
 
+### Useful Links
+
+- [Testing Controller Logic in ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/mvc/controllers/testing?view=aspnetcore-2.2)
+- [Parsing Results from ActionResult](https://stackoverflow.com/a/51489502)
+
 ### Stretch Goal 
 
 What happens when the database goes down? Can you similate this?
