@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using Dapper;
+using KetoPal.Core;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -16,10 +17,12 @@ namespace KetoPal.Api.Controllers
     public class ProductsController : ControllerBase
     {
         private readonly IConfiguration _configuration;
+        private readonly IProductsProvider _productsProvider;
 
-        public ProductsController(IConfiguration configuration)
+        public ProductsController(IConfiguration configuration, IProductsProvider productsProvider)
         {
             _configuration = configuration;
+            _productsProvider = productsProvider;
         }
 
         // GET api/products
@@ -32,8 +35,10 @@ namespace KetoPal.Api.Controllers
                 await connection.OpenAsync();
 
                 // oh yea boil the ocean
-                var products = await connection.QueryAsync<Product>("usp_Get_FoodProductsByCarbs",
-                    commandType: CommandType.StoredProcedure);
+                //var products = await connection.QueryAsync<Product>("usp_Get_FoodProductsByCarbs",
+                //    commandType: CommandType.StoredProcedure);
+
+                var products = await _productsProvider.GetFoodProductsByCarbs();
 
                 if (userId > 0)
                 {
@@ -86,12 +91,5 @@ namespace KetoPal.Api.Controllers
     {
         public int UserId { get; set; }
         public double CarbAmount { get; set; }
-    }
-
-    public class Product
-    {
-        public string Name { get; set; }
-        public string Manufacturer { get; set; }
-        public double Carbs { get; set; }
     }
 }
