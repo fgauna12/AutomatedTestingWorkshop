@@ -16,12 +16,14 @@ namespace KetoPal.Tests
     {
         private Mock<IProductsProvider> _productsProviderMock;
         private ProductsController _classUnderTest;
+        private Mock<IUsersProvider> _usersProviderMock;
 
         [TestInitialize]
         public void SetUp()
         {
             _productsProviderMock = new Mock<IProductsProvider>();
-            _classUnderTest = new ProductsController(_productsProviderMock.Object);
+            _usersProviderMock = new Mock<IUsersProvider>();
+            _classUnderTest = new ProductsController(_productsProviderMock.Object, _usersProviderMock.Object);
         }
 
         [TestMethod]
@@ -58,10 +60,29 @@ namespace KetoPal.Tests
         }
 
         [TestMethod]
-        public async Task GetProducts_HasUserId_RequestsProductsForUser()
+        public async Task GetProducts_HasUserId_TriesToFindUser()
         {
             //Arrange
             var userId = 5;
+
+            //Act
+            ActionResult<List<Product>> response = await _classUnderTest.Get(userId);
+
+            //Assert
+            _usersProviderMock.Verify(x => x.FindUserById(userId));
+        }
+
+        [TestMethod]
+        public async Task GetProducts_HasUserId_TriesToGetProductsForUser()
+        {
+            //Arrange
+            var userId = 5;
+
+            _usersProviderMock.Setup(x => x.FindUserById(userId)).ReturnsAsync(new User()
+            {
+                Id = userId,
+                UserName = "test user"
+            });
 
             //Act
             ActionResult<List<Product>> response = await _classUnderTest.Get(userId);

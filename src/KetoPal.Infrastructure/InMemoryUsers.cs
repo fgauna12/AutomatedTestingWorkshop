@@ -1,9 +1,7 @@
 ﻿using System.Collections.Generic;
-using KetoPal.Api.Controllers;
-using KetoPal.Core;
 using KetoPal.Core.Models;
 
-namespace KetoPal.Api
+namespace KetoPal.Infrastructure
 {
     public class InMemoryUsers
     {

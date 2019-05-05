@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Dapper;
 using KetoPal.Core;
 using KetoPal.Core.Models;
+using KetoPal.Infrastructure;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,10 +18,12 @@ namespace KetoPal.Api.Controllers
     public class ProductsController : ControllerBase
     {
         private readonly IProductsProvider _productsProvider;
+        private readonly IUsersProvider _usersProvider;
 
-        public ProductsController(IProductsProvider productsProvider)
+        public ProductsController(IProductsProvider productsProvider, IUsersProvider usersProvider)
         {
             _productsProvider = productsProvider;
+            _usersProvider = usersProvider;
         }
 
         // GET api/products
@@ -32,7 +35,8 @@ namespace KetoPal.Api.Controllers
 
             if (userId > 0)
             {
-                var user = InMemoryUsers.GetUsers().FirstOrDefault(x => x.Id == userId);
+                //var user = InMemoryUsers.GetUsers().FirstOrDefault(x => x.Id == userId);
+                User user = await _usersProvider.FindUserById(userId);
                 products = await _productsProvider.GetFoodProductsByCarbsForUser(user);
             }
             else
