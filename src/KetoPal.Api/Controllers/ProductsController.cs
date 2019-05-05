@@ -40,6 +40,8 @@ namespace KetoPal.Api.Controllers
                 products = await _productsProvider.GetFoodProductsByCarbs();
             }
 
+            products = products ?? new List<Product>();
+
             return Ok(products.ToList());
         }
 
