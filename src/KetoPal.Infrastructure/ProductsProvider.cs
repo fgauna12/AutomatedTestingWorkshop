@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Dapper;
 using KetoPal.Core;
+using KetoPal.Core.Models;
 
 namespace KetoPal.Infrastructure
 {
