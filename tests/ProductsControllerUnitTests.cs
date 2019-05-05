@@ -5,6 +5,7 @@ using KetoPal.Api.Controllers;
 using KetoPal.Core;
 using KetoPal.Core.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.VisualStudio.TestPlatform.ObjectModel;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
@@ -54,6 +55,20 @@ namespace KetoPal.Tests
             productResults.Should().NotBeNull();
             productResults.Count.Should().Be(products.Count);
             productResults.TrueForAll(x => products.Contains(x)).Should().BeTrue();
+        }
+
+        [TestMethod]
+        public async Task GetProducts_HasUserId_RequestsProductsForUser()
+        {
+            //Arrange
+            var userId = 5;
+
+            //Act
+            ActionResult<List<Product>> response = await _classUnderTest.Get(userId);
+
+            //Assert
+            _productsProviderMock.Verify(x => x.GetFoodProductsByCarbsForUser(It.Is<User>(user => 
+                user != null && user.Id == userId)));
         }
     }
 }
