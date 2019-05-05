@@ -34,5 +34,26 @@ namespace KetoPal.Tests
             //Assert
             _productsProviderMock.Verify(x => x.GetFoodProductsByCarbs());
         }
+
+        [TestMethod]
+        public async Task GetProducts_NoUserId_ReturnsAllProductsFromProvider()
+        {
+            //Arrange
+            var products = new List<Product>()
+            {
+                new Product() {Carbs = 1.1, Manufacturer = "Jimmy Goods", Name = "Jimmy Thing"}
+            };
+            _productsProviderMock.Setup(x => x.GetFoodProductsByCarbs()).ReturnsAsync(products);
+
+            //Act
+            ActionResult<List<Product>> response = await _classUnderTest.Get(0);
+
+            //Assert
+            var result = response.Result as ObjectResult;
+            var productResults = result?.Value as List<Product>;
+            productResults.Should().NotBeNull();
+            productResults.Count.Should().Be(products.Count);
+            productResults.TrueForAll(x => products.Contains(x)).Should().BeTrue();
+        }
     }
 }
