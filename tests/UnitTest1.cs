@@ -39,7 +39,7 @@ namespace KetoPal.Tests
             var result = response.Result as ObjectResult;
             var products = result?.Value as List<Product>;
             Assert.IsNotNull(products);
-            Assert.IsTrue(products.TrueForAll(x => x.Carbs > 0.0), "some products have carbs");
+            Assert.IsTrue(products.TrueForAll(x => x.Carbs >= 0.0), "some products have carbs");
         }
 
         [TestMethod]
@@ -77,7 +77,6 @@ namespace KetoPal.Tests
             var result = response.Result as ObjectResult;
             var products = result?.Value as List<Product>;
             Assert.IsNotNull(products);
-            
         }
 
         [TestMethod]
