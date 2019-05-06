@@ -131,9 +131,9 @@ As you start learning, create some test cases to start documenting given some cr
 
 #### How do I know I'm done?
 
-Do you have a good idea about the kind of refactorings you'd to do to start breaking dependencies?
-What would it take to start making this code more unit testable?
-Do you comfortable enough to start refactoring without breaking it?
+- Do you have a good idea about the kind of refactorings you'd to do to start breaking dependencies?
+- What would it take to start making this code more unit testable?
+- Do you comfortable enough to start refactoring without breaking it?
 
 ### 2. Refactor the method
 
