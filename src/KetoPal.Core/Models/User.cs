@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace KetoPal.Core.Models
 {
@@ -8,5 +9,14 @@ namespace KetoPal.Core.Models
         public string UserName { get; set; }
         public Preference Preference { get; set; }
         public List<CarbConsumption> CarbConsumption { get; set; }
+
+        public void RecordConsumption(double carbAmount)
+        {
+            CarbConsumption.Add(new CarbConsumption()
+            {
+                Amount = carbAmount,
+                ConsumedOn = DateTimeOffset.Now
+            });
+        }
     }
 }

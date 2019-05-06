@@ -56,19 +56,13 @@ namespace KetoPal.Api.Controllers
         {
             if (command.UserId > 0)
             {
-                var user = InMemoryUsers.GetUsers().FirstOrDefault(x => x.Id == command.UserId);
-                user.CarbConsumption.Add(new CarbConsumption()
-                {
-                    Amount = command.CarbAmount,
-                    ConsumedOn = DateTimeOffset.Now
-                });
+                User user = await _usersProvider.FindUserById(command.UserId);
+                user.RecordConsumption(command.CarbAmount);
 
                 return NotModified();
             }
-            else
-            {
-                return NotFound();
-            }
+
+            return NotFound();
         }
 
         private ActionResult NotModified()
