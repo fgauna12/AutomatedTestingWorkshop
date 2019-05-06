@@ -129,6 +129,12 @@ As you start learning, create some test cases to start documenting given some cr
 
 >:warning: Note: Remember, don't start refactoring right away. You have running database using docker. Feel free to connect to it using your tests and expirement away.
 
+#### How do I know I'm done?
+
+Do you have a good idea about the kind of refactorings you'd to do to start breaking dependencies?
+What would it take to start making this code more unit testable?
+Do you comfortable enough to start refactoring without breaking it?
+
 ### 2. Refactor the method
 
 Run your characterization tests often to make sure your refactoring is not breaking things.
