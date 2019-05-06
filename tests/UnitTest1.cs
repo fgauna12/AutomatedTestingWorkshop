@@ -26,24 +26,25 @@ namespace KetoPal.Tests
             ActionResult<List<Product>> response = await productsController.Get(0);
         }
 
-        //[TestMethod]
-        //public async Task x1()
-        //{
-        //    //do they all have carb content?
+        [TestMethod]
+        public async Task x1()
+        {
+            //do they all have carb content?
 
-        //    var configuration = new Mock<IConfiguration>();
-        //    configuration.Setup(x => x.GetSection("ConnectionStrings")["FoodDb"])
-        //        .Returns("Server=10.0.75.1;Database=Foods;User Id=SA;Password=#newPass1");
+            var connectionString = "Server=10.0.75.1;Database=Foods;User Id=SA;Password=#newPass1";
+            var configuration = new Mock<IConfiguration>();
+            configuration.Setup(x => x.GetSection("ConnectionStrings")["FoodDb"])
+                .Returns(connectionString);
 
-        //    var productsController = new ProductsController(configuration.Object);
+            var productsController = new ProductsController(configuration.Object, new ProductsProvider(connectionString));
 
-        //    ActionResult<List<Product>> response = await productsController.Get(0);
+            ActionResult<List<Product>> response = await productsController.Get(0);
 
-        //    var result = response.Result as ObjectResult;
-        //    var products = result?.Value as List<Product>;
-        //    Assert.IsNotNull(products);
-        //    Assert.IsTrue(products.TrueForAll(x => x.Carbs > 0.0), "some products have carbs");
-        //}
+            var result = response.Result as ObjectResult;
+            var products = result?.Value as List<Product>;
+            Assert.IsNotNull(products);
+            Assert.IsTrue(products.TrueForAll(x => x.Carbs >= 0.0), "some products have carbs");
+        }
 
         [TestMethod]
         public async Task x2()
