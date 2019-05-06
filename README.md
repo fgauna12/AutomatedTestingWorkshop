@@ -90,8 +90,8 @@ After you connect, you'll see a database called *Foods*
 
 ![](docs/images/ssms-explorer.png?raw=true)
 
-> :question: Note - If you have trouble connecting to the database using SSMS, you can try using the command line:
-[MSFT Docs - Connection to SQL Server](https://docs.microsoft.com/en-us/sql/linux/quickstart-install-connect-docker?view=sql-server-2017&pivots=cs1-powershell#connect-to-sql-server)
+> :fire: Note - If you have trouble connecting to the database using SSMS, you can try using the command line:
+[MSFT Docs - Connection to SQL Server](https://docs.microsoft.com/en-us/sql/linux/quickstart-install-connect-docker?view=sql-server-2017&pivots=cs1-powershell#connect-to-sql-server). If you can't connect, you can try killing your container using a new SA password.
 
 ### 2. Run the API
 
