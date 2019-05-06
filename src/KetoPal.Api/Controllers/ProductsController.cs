@@ -35,7 +35,6 @@ namespace KetoPal.Api.Controllers
 
             if (userId > 0)
             {
-                //var user = InMemoryUsers.GetUsers().FirstOrDefault(x => x.Id == userId);
                 User user = await _usersProvider.FindUserById(userId);
                 products = await _productsProvider.GetFoodProductsByCarbsForUser(user);
             }
