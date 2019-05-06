@@ -36,7 +36,7 @@ To save time, let's use Docker to pull down an image of SQL Server 2017 on Linux
 Run the following command using a password of your choice: 
 
 ``` powershell
-docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=[some silly password]" -p 1433:1433 --name foodsql -d fgauna12/fooddb:latest
+docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=#newPass1" -p 1433:1433 --name foodsql -d fgauna12/fooddb:latest
 ```
 
 Verify that the database is running:
