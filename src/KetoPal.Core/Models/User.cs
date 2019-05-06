@@ -8,7 +8,8 @@ namespace KetoPal.Core.Models
         public int Id { get; set; }
         public string UserName { get; set; }
         public Preference Preference { get; set; }
-        public List<CarbConsumption> CarbConsumption { get; set; }
+        public List<CarbConsumption> CarbConsumption { get; set; }  = new List<CarbConsumption>();
+        public double TotalCarbConsumption { get; set; }
 
         public void RecordConsumption(double carbAmount)
         {
@@ -17,6 +18,7 @@ namespace KetoPal.Core.Models
                 Amount = carbAmount,
                 ConsumedOn = DateTimeOffset.Now
             });
+            TotalCarbConsumption += carbAmount;
         }
     }
 }
