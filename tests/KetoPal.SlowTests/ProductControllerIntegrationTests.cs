@@ -7,21 +7,25 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using Moq.Language.Flow;
 
 namespace KetoPal.SlowTests
 {
     [TestClass]
     public class ProductControllerIntegrationTests
     {
+        private string _connectionString;
+
+        [TestInitialize]
+        public void SetUp()
+        {
+            _connectionString = "Server=10.0.75.1;Database=Foods;User Id=SA;Password=#newPass1";
+        }
+
         [TestMethod]
         public async Task ReturnsSomething()
         {
-            var configuration = new Mock<IConfiguration>();
-            var connectionString = "Server=10.0.75.1;Database=Foods;User Id=SA;Password=#newPass1";
-            configuration.Setup(x => x.GetSection("ConnectionStrings")["FoodDb"])
-                .Returns(connectionString);
-
-            var productsController = new ProductsController(new ProductsProvider(connectionString), new InMemoryUsersProvider());
+            var productsController = new ProductsController(new ProductsProvider(_connectionString), new InMemoryUsersProvider());
 
             ActionResult<List<Product>> response = await productsController.Get(0);
 
@@ -33,12 +37,7 @@ namespace KetoPal.SlowTests
         [TestMethod]
         public async Task DataHasCarbContent()
         {
-            var configuration = new Mock<IConfiguration>();
-            var connectionString = "Server=10.0.75.1;Database=Foods;User Id=SA;Password=#newPass1";
-            configuration.Setup(x => x.GetSection("ConnectionStrings")["FoodDb"])
-                .Returns(connectionString);
-
-            var productsController = new ProductsController(new ProductsProvider(connectionString), new InMemoryUsersProvider());
+            var productsController = new ProductsController(new ProductsProvider(_connectionString), new InMemoryUsersProvider());
 
             ActionResult<List<Product>> response = await productsController.Get(0);
 
@@ -51,12 +50,7 @@ namespace KetoPal.SlowTests
         [TestMethod]
         public async Task AllHaveManufaturer()
         {
-            var connectionString = "Server=10.0.75.1;Database=Foods;User Id=SA;Password=#newPass1";
-            var configuration = new Mock<IConfiguration>();
-            configuration.Setup(x => x.GetSection("ConnectionStrings")["FoodDb"])
-                .Returns(connectionString);
-
-            var productsController = new ProductsController(new ProductsProvider(connectionString), new InMemoryUsersProvider());
+            var productsController = new ProductsController(new ProductsProvider(_connectionString), new InMemoryUsersProvider());
 
             ActionResult<List<Product>> response = await productsController.Get(0);
 
@@ -69,12 +63,7 @@ namespace KetoPal.SlowTests
         [TestMethod]
         public async Task WhenIProviderUserId_ItReturnsSomething()
         {
-            var connectionString = "Server=10.0.75.1;Database=Foods;User Id=SA;Password=#newPass1";
-            var configuration = new Mock<IConfiguration>();
-            configuration.Setup(x => x.GetSection("ConnectionStrings")["FoodDb"])
-                .Returns(connectionString);
-
-            var productsController = new ProductsController(new ProductsProvider(connectionString), new InMemoryUsersProvider());
+            var productsController = new ProductsController(new ProductsProvider(_connectionString), new InMemoryUsersProvider());
 
             ActionResult<List<Product>> response = await productsController.Get(1);
 
@@ -87,12 +76,7 @@ namespace KetoPal.SlowTests
         [TestMethod]
         public async Task WhenIProvideUserId_ItFiltersTheResults()
         {
-            var connectionString = "Server=10.0.75.1;Database=Foods;User Id=SA;Password=#newPass1";
-            var configuration = new Mock<IConfiguration>();
-            configuration.Setup(x => x.GetSection("ConnectionStrings")["FoodDb"])
-                .Returns(connectionString);
-
-            var productsController = new ProductsController(new ProductsProvider(connectionString), new InMemoryUsersProvider());
+            var productsController = new ProductsController(new ProductsProvider(_connectionString), new InMemoryUsersProvider());
 
             ActionResult<List<Product>> response0 = await productsController.Get(0);
             ActionResult<List<Product>> response1 = await productsController.Get(1);
